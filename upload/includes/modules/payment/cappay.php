@@ -66,6 +66,10 @@ if (isset($set_modules) && $set_modules == TRUE)
 
 class cappay
 {
+    function __construct()
+    {
+        $this->cappay();
+    }
     /**
      * 构造函数
      *
@@ -78,10 +82,6 @@ class cappay
     {
     }
 
-    function __construct()
-    {
-        $this->cappay();
-    }
 
     /**
      * 生成支付代码
