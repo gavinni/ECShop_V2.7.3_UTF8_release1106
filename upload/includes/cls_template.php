@@ -297,7 +297,8 @@ class cls_template
                  $source= str_replace('%%%SMARTYSP'.$curr_sp.'%%%', '<?php echo \''.str_replace("'", "\'", $sp_match[1][$curr_sp]).'\'; ?>'."\n", $source);
             }
          }
-         return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+//         return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+         return preg_replace_callback("/{([^\}\{\n]*)}/", function($r){return $this->select($r[1]);}, $source); 
     }
 
     /**
@@ -492,7 +493,8 @@ class cls_template
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);
 
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+//                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    $out = "<?php \n" . '$k = ' . preg_replace_callback("/(\'\\$[^,]+)/", function(){return stripslashes(trim('\\1','\''));}, var_export($t, true)) . ";\n";
                     $out .= 'echo $this->_echash . $k[\'name\'] . \'|\' . serialize($k) . $this->_echash;' . "\n?>";
 
                     return $out;
