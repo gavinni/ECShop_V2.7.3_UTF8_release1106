@@ -64,6 +64,10 @@ if (isset($set_modules) && $set_modules == TRUE)
  */
 class balance
 {
+    function __construct()
+    {
+        $this->balance();
+    }
     /**
      * 构造函数
      *
@@ -76,10 +80,6 @@ class balance
     {
     }
 
-    function __construct()
-    {
-        $this->balance();
-    }
 
     /**
      * 提交函数

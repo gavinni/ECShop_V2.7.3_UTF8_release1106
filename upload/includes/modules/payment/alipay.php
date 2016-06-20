@@ -70,6 +70,10 @@ if (isset($set_modules) && $set_modules == TRUE)
 class alipay
 {
 
+    function __construct()
+    {
+        $this->alipay();
+    }
     /**
      * 构造函数
      *
@@ -82,10 +86,6 @@ class alipay
     {
     }
 
-    function __construct()
-    {
-        $this->alipay();
-    }
 
     /**
      * 生成支付代码

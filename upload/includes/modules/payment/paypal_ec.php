@@ -80,6 +80,10 @@ class paypal_ec
 {
 
 
+    function __construct()
+    {
+        $this->paypal_ec();
+    }
     /**
      * 构造函数
      *
@@ -93,10 +97,6 @@ class paypal_ec
 
     }
 
-    function __construct()
-    {
-        $this->paypal_ec();
-    }
 
 
 
